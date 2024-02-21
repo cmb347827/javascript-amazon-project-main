@@ -47,7 +47,7 @@ products.forEach((product)=>{
           Added
         </div>
 
-        <button class="add-to-cart-button button-primary">
+        <button data-product-id='${product.id}' class="add-to-cart-button button-primary js-add-to-cart">
           Add to Cart
         </button>
       </div>
@@ -55,3 +55,29 @@ products.forEach((product)=>{
 });
 
 document.querySelector('.js-products-grid').innerHTML= productsHTML;
+
+document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
+   button.addEventListener('click',()=>{
+      const productId= button.dataset.productId;
+      let matchingItem;
+      //loop to see if item is already in cart
+      cart.forEach((item)=>{
+        if(productId===item.productId){
+           matchingItem=item;
+        }
+      });
+      if(matchingItem){
+        //item.quantity+=1 below line 66 increases the quantity for each individually added same item.
+        //item is an object, so copied to matchingItem, matchingItem is an object, can add properties:quantity.
+        matchingItem.quantity+=1;
+      }else{
+        //item is not yet in cart.
+        cart.push({
+          productId,
+          quantity:1
+        });
+      }
+      
+      console.log(cart);
+   });
+});
