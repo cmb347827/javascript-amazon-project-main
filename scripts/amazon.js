@@ -1,5 +1,5 @@
 
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 let productsHTML='';
@@ -59,38 +59,20 @@ products.forEach((product)=>{
 
 document.querySelector('.js-products-grid').innerHTML= productsHTML;
 
+
+function updateCartQuantity(){
+  //updates webpage as well as update cart, so keep here for now.
+  let cartQuantity=0;
+  cart.forEach((cartItem)=>{
+     cartQuantity+=cartItem.quantity;
+  });
+  document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
+}
 document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
    button.addEventListener('click',()=>{
       const productId= button.dataset.productId;
-      let matchingItem;
-      let cartQuantity=0;
-      //loop to see if item is already in cart
-      cart.forEach((item)=>{
-        console.log('cart isn\'t empty and item is in cart');
-        if(productId===item.productId){
-           matchingItem=item;
-        }
-      });
+      addToCart(productId);
+      updateCartQuantity();
       
-      if(matchingItem){
-        console.log('as is visible here');
-        //item.quantity+=1 below line 66 increases the quantity for each individually added same item.
-        //item is an object, so copied to matchingItem, matchingItem is an object, can add properties:quantity.
-        matchingItem.quantity+=1;
-
-      }else{
-        //item is not yet in cart.
-        console.log('item is not yet in cart');
-        cart.push({
-          productId,
-          quantity: 1,
-        });
-      }
-      
-      cart.forEach((item)=>{
-         cartQuantity+=item.quantity;
-      });
-      
-      document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
    });
 });
