@@ -71,11 +71,11 @@ function updateCartQuantity(){
   console.log('twee',cartQuantity);
   document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
 }
+
 document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
    button.addEventListener('click',()=>{
       const productId= button.dataset.productId;
       addToCart(productId);
       updateCartQuantity();
-      
    });
 });
