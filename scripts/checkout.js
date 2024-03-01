@@ -16,8 +16,7 @@ cart.forEach((cartItem)=>{
       }
    });
 
-   cartSummaryHTML +=
-  `
+   cartSummaryHTML += `
   <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
   <div class="delivery-date">
     Delivery date: Tuesday, June 21
@@ -92,9 +91,10 @@ cart.forEach((cartItem)=>{
       </div>
     </div>
   </div>
-</div>
-  
+ </div>
   `;
+});
+
    //js-order-summary : see checkout.html
    document.querySelector('.js-order-summary').innerHTML= cartSummaryHTML;
 
@@ -105,6 +105,5 @@ cart.forEach((cartItem)=>{
           const container = document.querySelector(`.js-cart-item-container-${productId}`);
           container.remove();
         });
-   })
+   });
    
-});
