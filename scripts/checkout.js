@@ -86,13 +86,12 @@ cart.forEach((cartItem)=>{
          const today = dayjs();
          const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
          const dateString = deliveryDate.format(`dddd, MMMM D`);
-         const priceString = (deliveryOption.priceCents ===0)? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)}-`;
+         const priceString = (deliveryOption.priceCents ===0) ? "FREE" : `$${formatCurrency(deliveryOption.priceCents)} -`;
          //should only be checked if deliveryoption id , matches the deliveryoption id in the cart.
-         const isChecked = deliveryOption.id === cartItem.deliveryOptionId
+         const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
-        html+=
-         `
-          <div class="delivery-option js-delivery-option" data-product-id='${matchingProduct.id}' data-delivery-option-id='${deliveryOption.id}>
+          html+= `
+          <div class="delivery-option js-delivery-option" data-product-id='${matchingProduct.id}' data-delivery-option-id='${deliveryOption.id}'>
             <input type="radio" ${isChecked ? 'checked' : ''}
               class="delivery-option-input"
               name="delivery-option-${matchingProduct.id}">
