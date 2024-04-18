@@ -68,5 +68,5 @@ export function renderPaymentSummary(){
     `;
 
 
-    document.querySelector('.js-payment-summary').innerHTML= paymentSummaryHTML;
+    document.querySelector('.js-payment-summary').innerHTML= paymentSummaryHTML; //.js-payment-summary did not exist in orderSummaryTest.js (div is now added, line 36)
 }
