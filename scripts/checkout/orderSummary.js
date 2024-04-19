@@ -1,4 +1,4 @@
-import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js';
+import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js';    
 import {products, getProduct} from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
@@ -42,7 +42,7 @@ export function renderOrderSummary(){
             ${matchingProduct.name}
           </div>
           <div class="product-price">
-            ${(formatCurrency(matchingProduct.priceCents))}
+            ${matchingProduct.getPrice()}
           </div>
           <div class="js-product-quantity-${matchingProduct.id} product-quantity">
             <span>
