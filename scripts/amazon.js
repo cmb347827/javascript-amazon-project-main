@@ -1,5 +1,5 @@
 
-import {cart, addToCart} from '../data/cart.js';  //updated from  '../data/cart.js';  challenge.
+import {cart, addToCart} from '../data/cart.js';  
 import {products} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
 
@@ -43,6 +43,8 @@ products.forEach((product)=>{
             <option  value="10">10</option>
           </select>
         </div> 
+         
+         ${product.extraInfoHTML()}
 
         <div class="product-spacer"></div>
 
