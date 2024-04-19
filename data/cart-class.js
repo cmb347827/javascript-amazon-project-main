@@ -2,13 +2,13 @@
 
 class Cart{
     cartItems;
-    localStorageKey;
+    #localStorageKey;  //private property
     constructor(localStorageKey){
-        this.localStorageKey=localStorageKey;
-        this.loadFromStorage();
+        this.#localStorageKey=localStorageKey;
+        this.#loadFromStorage();
     }
-    loadFromStorage(){
-        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey)); //changed cart to cart-oop so doesn't affect original cart.
+    #loadFromStorage(){  //private method
+        this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey)); //changed cart to cart-oop so doesn't affect original cart.
         //empty cart from cartTest.js , is falsy
         //(!cart) becomes truthy???
         if(!this.cartItems){
@@ -26,7 +26,7 @@ class Cart{
     }
     saveToStorage(){
         //whenever the cart is updated , will be saved in local storage.
-        localStorage.setItem(this.localStorageKey,JSON.stringify(this.cartItems));
+        localStorage.setItem(this.#localStorageKey,JSON.stringify(this.cartItems));
     }
     addToCart(productId){
         let matchingItem;
