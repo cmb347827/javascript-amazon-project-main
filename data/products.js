@@ -67,6 +67,36 @@ class Clothing extends Product{
 });
 console.log(tshirt.getPrice());*/ 
 
+/* below code , commented out is practice code , used only in tuturial end part of video 17*
+function logThis(){
+  console.log('in logthis',this);  //Inside a function , 'this' is undefined.
+}
+logThis();  //in logthis undefined
+logThis.call('hello'); //in logthis hello //but can change value of 'this'using call()
+
+const object3={
+   method:()=>{
+      console.log('in method',this); //in method undefined 
+   },
+   method2(){
+    console.log('in method2',this); //in method2 {method:f,method2:f}. Inside a method, 'this' points to outer object.
+    [1,2,3].forEach(function(){
+       console.log('in foreach',this); //in foreach  undefined
+    });
+    [1,2,3].forEach(()=>{
+      console.log('in foreach arrow',this); //in foreach arrow {method:f,method2:f} arrow function 'this' value ,same as value of 'this' outside fuction.
+      //arrow functions do not change the value of  'this'.
+    });
+  }
+}
+object3.method();
+object3.method2();
+const func=()=>{
+  console.log('in func',this);     //in func undefined
+};
+func();
+*/
+
 //instead of having an array of regular objects(export const products=[new Product{id:...},new Product{...},etc]), we're going to convert each of these objects into the product class using map()
 export const products = [
   {
